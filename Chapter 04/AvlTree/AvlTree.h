@@ -12,21 +12,21 @@ struct AvlNode;
 typedef struct AvlNode *Position;
 typedef struct AvlNode *AvlTree;
 
-AvlTree MakeEmpty(AvlTree T); //清空一棵树
-Position Find(int X, AvlTree T); //寻找值为X的节点并返回指向该节点的指针
-Position FindMax(AvlTree T); //寻找最大的元素
-Position FindMin(AvlTree T); //寻找最小的元素
-AvlTree Insert(int X, AvlTree T); //插入元素X
-AvlTree Delete(int X, AvlTree T); //删除元素X
-static int Height(Position P); //返回节点P的高度
-static Position SingleRotateWithLeft(Position K2); //insert LC->L，返回新的根
+AvlTree MakeEmpty(AvlTree T);                       //清空一棵树
+Position Find(int X, AvlTree T);                    //寻找值为X的节点并返回指向该节点的指针
+Position FindMax(AvlTree T);                        //寻找最大的元素
+Position FindMin(AvlTree T);                        //寻找最小的元素
+AvlTree Insert(int X, AvlTree T);                   //插入元素X
+AvlTree Delete(int X, AvlTree T);                   //删除元素X
+static int Height(Position P);                      //返回节点P的高度
+static Position SingleRotateWithLeft(Position K2);  //insert LC->L，返回新的根
 static Position SingleRotateWithRight(Position K2); //insert RC->R，返回新的根
-static Position DoubleRotateWithLeft(Position K3); //insert LC->R，返回新的根
+static Position DoubleRotateWithLeft(Position K3);  //insert LC->R，返回新的根
 static Position DoubleRotateWithRight(Position K3); //insert RC->L，返回新的根
-static int Max(int a, int b); //比大小
-void InorderTreeWalk(AvlTree T); //中序遍历输出
-void PreTreeWalk(AvlTree T); //先序遍历输出
-void PostTreeWalk(AvlTree T); //后序遍历输出
+static int Max(int a, int b);                       //比大小
+void InorderTreeWalk(AvlTree T);                    //中序遍历输出
+void PreTreeWalk(AvlTree T);                        //先序遍历输出
+void PostTreeWalk(AvlTree T);                       //后序遍历输出
 
 #endif //AVLTREE_AVLTREE_H
 
@@ -55,7 +55,7 @@ static int Height(Position P)
   }
 }
 
-AvlTree MakeEmpty(AvlTree T)  //递归释放所有节点，相当于构造一个空树
+AvlTree MakeEmpty(AvlTree T) //递归释放所有节点，相当于构造一个空树
 {
   if (T != NULL)
   {
@@ -67,13 +67,13 @@ AvlTree MakeEmpty(AvlTree T)  //递归释放所有节点，相当于构造一个
 
 Position Find(int X, AvlTree T) //在树T中寻找元素X的位置，并返回指向节点的指针，未找到返回NULL
 {
-  if (T == NULL)  //树T为空，代表寻找到叶子仍未找到目标元素；或树T本来就为空
+  if (T == NULL) //树T为空，代表寻找到叶子仍未找到目标元素；或树T本来就为空
   {
     return NULL;
   }
   else
   {
-    if (X < T->Element)  //比根节点大，进入左子树搜索
+    if (X < T->Element) //比根节点大，进入左子树搜索
     {
       return Find(X, T->Left);
     }
@@ -84,7 +84,7 @@ Position Find(int X, AvlTree T) //在树T中寻找元素X的位置，并返回�
   }
 }
 
-Position FindMin(AvlTree T)  //寻找树中最小元素
+Position FindMin(AvlTree T) //寻找树中最小元素
 {
   if (T == NULL)
   {
@@ -92,7 +92,7 @@ Position FindMin(AvlTree T)  //寻找树中最小元素
   }
   else
   {
-    if (T->Left == NULL)  //当前节点的左子树为空，说明该节点保存着最小值
+    if (T->Left == NULL) //当前节点的左子树为空，说明该节点保存着最小值
     {
       return T;
     }
@@ -149,7 +149,7 @@ static Position DoubleRotateWithRight(Position K3) //处理向右儿子的左子
   return SingleRotateWithRight(K3);
 }
 
-static Position Fix(Position K2)  //修复不平衡的节点：不平衡的意思是他的左子树和右子树高度差达到2
+static Position Fix(Position K2) //修复不平衡的节点：不平衡的意思是他的左子树和右子树高度差达到2
 {
   if (Height(K2->Left) > Height(K2->Right))
   {
@@ -174,7 +174,7 @@ AvlTree Insert(int X, AvlTree T)
 {
   if (T == NULL)
   {
-    T = (AvlNode *) malloc(sizeof(AvlNode));
+    T = (AvlNode *)malloc(sizeof(AvlNode));
     if (T == NULL)
     {
       printf("ERROR:Out of space!\n");
@@ -214,7 +214,7 @@ AvlTree Insert(int X, AvlTree T)
 AvlTree Delete(int X, AvlTree T) //删除树中值为X的节点
 {
   Position TmpCell; //相当于中间变量
-  if (T == NULL) //始终未找到
+  if (T == NULL)    //始终未找到
   {
     printf("Element [%d] Not Found", X);
   }
@@ -320,21 +320,3 @@ void PostTreeWalk(AvlTree T)
     printf("%d ", T->Element);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
