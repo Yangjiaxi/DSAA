@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "list_ptr.h"
 
-void FindAndOut(int X, list L)
+void findAndOut(int X, list L)
 {
   position P = find(X, L);
   if (P != NULL)
@@ -30,11 +30,11 @@ int main()
   printf("Value of first element: %d\n", retrieve(firstElement(L)));
   printf("Value of second element: %d\n", retrieve(advance(firstElement(L))));
   printf("Value of 5-th element: %d\n", retrieve(advance_n(header(L), 5)));
-  FindAndOut(5, L);
-  FindAndOut(11, L);
+  findAndOut(5, L);
+  findAndOut(11, L);
   deleteByValue(5, L);
   printList(L);
-  FindAndOut(5, L);
+  findAndOut(5, L);
   P = advance_n(L, 5);
   printf("Value of 5-th element: %d\n", retrieve(P));
   P = find(9, L);
