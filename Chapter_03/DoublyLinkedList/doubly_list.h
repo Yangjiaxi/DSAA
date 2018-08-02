@@ -7,7 +7,7 @@
 
 struct Node;
 typedef struct Node *PtrToNode;
-typedef PtrToNode DoublyList;  //ADT::DoublyList
+typedef PtrToNode DoublyList; //ADT::DoublyList
 typedef PtrToNode Position;
 
 DoublyList InitList(DoublyList L);
