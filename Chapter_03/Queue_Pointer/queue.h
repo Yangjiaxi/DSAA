@@ -12,13 +12,13 @@ void InitQueue(Queue Q);
 
 int IsEmpty(Queue Q);
 
-void EnQueue(int X, Queue Q);
+void Push(int X, Queue Q);
 
 int Front(Queue Q);
 
 int Back(Queue Q);
 
-int DeQueue(Queue Q);
+int Pop(Queue Q);
 
 void DeleteQueue(Queue Q);
 

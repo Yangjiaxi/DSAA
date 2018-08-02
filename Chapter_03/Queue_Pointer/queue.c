@@ -25,7 +25,7 @@ int IsEmpty(Queue Q)
   return Q->front == NULL;
 }
 
-void EnQueue(int X, Queue Q)
+void Push(int X, Queue Q)
 {
   Position newbee = malloc(sizeof(Node));
   newbee->element = X;
@@ -51,7 +51,7 @@ int Back(Queue Q)
   return Q->rear->element;
 }
 
-int DeQueue(Queue Q)
+int Pop(Queue Q)
 {
   Position tmp = Q->front;
   Q->front = Q->front->next;
