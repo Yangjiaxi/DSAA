@@ -92,7 +92,6 @@ position findPreviousByPtr(position P, list L)
   return tmp;
 }
 
-
 // insertAfter X after P in L
 position insertAfter(int X, list L, position P)
 {
