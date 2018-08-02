@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 
-void fatal(const char*);
+void Fatal(const char *s);
 
 
 #endif //DOUBLYLINKEDLIST_FATAL_H

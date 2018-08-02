@@ -16,16 +16,16 @@ struct Node
   Position prev;
 };
 
-DoublyList initList(DoublyList L)
+DoublyList InitList(DoublyList L)
 {
   if (L != NULL)
   {
-    deleteList(L);
+    DeleteList(L);
   }
   L = malloc(sizeof(struct Node));
   if (L == NULL)
   {
-    fatal("[ERROR] Out of Space!\n");
+    Fatal("[ERROR] Out of Space!\n");
   }
   else
   {
@@ -36,7 +36,7 @@ DoublyList initList(DoublyList L)
   return L;
 }
 
-void deleteList(DoublyList L)
+void DeleteList(DoublyList L)
 {
   Position p, tmp;
   p = L->next;
@@ -50,22 +50,22 @@ void deleteList(DoublyList L)
   }
 }
 
-int isEmpty(DoublyList L)
+int IsEmpty(DoublyList L)
 {
   return L->next == NULL;
 }
 
-int isFirst(Position P, DoublyList L)
+int IsFirst(Position P, DoublyList L)
 {
   return L->next == P;
 }
 
-int isLast(Position P, DoublyList L)
+int IsLast(Position P, DoublyList L)
 {
   return P->next == NULL;
 }
 
-Position find(int X, DoublyList L)
+Position Find(int X, DoublyList L)
 {
   Position P;
   P = L->next;
@@ -76,17 +76,17 @@ Position find(int X, DoublyList L)
   return P;
 }
 
-void deleteByValue(int X, DoublyList L)
+void DeleteByValue(int X, DoublyList L)
 {
   Position P;
-  P = find(X, L);
-  deleteByPtr(P, L);
+  P = Find(X, L);
+  DeleteByPtr(P, L);
 }
 
-void deleteByPtr(Position P, DoublyList L)
+void DeleteByPtr(Position P, DoublyList L)
 {
   P->prev->next = P->next;
-  if (!isLast(P, L))
+  if (!IsLast(P, L))
   {
     P->next->prev = P->prev;
   }
@@ -95,20 +95,20 @@ void deleteByPtr(Position P, DoublyList L)
   free(P);
 }
 
-Position insertAfter(int X, DoublyList L, Position P)
+Position InsertAfter(int X, DoublyList L, Position P)
 {
   Position newbee = NULL;
   newbee = malloc(sizeof(struct Node));
   if (newbee == NULL)
   {
-    fatal("[ERROR] Out of space!\n");
+    Fatal("[ERROR] Out of space!\n");
   }
   else
   {
     newbee->element = X;
     newbee->prev = P;
     newbee->next = P->next;
-    if (!isLast(P, L))
+    if (!IsLast(P, L))
     {
       P->next->prev = newbee;
     }
@@ -117,41 +117,41 @@ Position insertAfter(int X, DoublyList L, Position P)
   return newbee;
 }
 
-Position insertBefore(int X, DoublyList L, Position P)
+Position InsertBefore(int X, DoublyList L, Position P)
 {
   if (P->prev != NULL)
   {
-    return insertAfter(X, L, P->prev);
+    return InsertAfter(X, L, P->prev);
   }
   else
   {
-    fatal("[ERROR] Out of range!\n");
+    Fatal("[ERROR] Out of range!\n");
     return NULL;
   }
 }
 
-Position header(DoublyList L)
+Position Header(DoublyList L)
 {
   return L;
 }
 
-Position last(DoublyList L)
+Position Last(DoublyList L)
 {
-  return forward_n(L, length(L));
+  return Forward_n(L, Length(L));
 }
 
 
-Position first(DoublyList L)
+Position First(DoublyList L)
 {
   return L->next;
 }
 
-Position forward(Position P)
+Position Forward(Position P)
 {
   return P->next;
 }
 
-Position forward_n(Position P, int n)
+Position Forward_n(Position P, int n)
 {
   Position target = P;
   for (int i = 1; i <= n; i++)
@@ -161,12 +161,12 @@ Position forward_n(Position P, int n)
   return target;
 }
 
-Position backward(Position P)
+Position Backward(Position P)
 {
   return P->prev;
 }
 
-Position backward_n(Position P, int n)
+Position Backward_n(Position P, int n)
 {
   Position target = P;
   for (int i = 1; i <= n; i++)
@@ -176,15 +176,15 @@ Position backward_n(Position P, int n)
   return target;
 }
 
-int retrieve(Position P)
+int Retrieve(Position P)
 {
   return P->element;
 }
 
-int length(DoublyList L)
+int Length(DoublyList L)
 {
   int count = 0;
-  Position tmp = first(L);
+  Position tmp = First(L);
   while (tmp != NULL)
   {
     ++count;
@@ -193,7 +193,7 @@ int length(DoublyList L)
   return count;
 }
 
-void printList(DoublyList L)
+void PrintList(DoublyList L)
 {
   printf("---[Print]---\n");
   Position P;

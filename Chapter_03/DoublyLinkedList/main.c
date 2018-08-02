@@ -4,56 +4,55 @@
 
 int main()
 {
-  DoublyList newList = NULL;
-  DoublyList Tail = NULL;
+  DoublyList new_list = NULL;
+  DoublyList tail = NULL;
   Position P;
-  Tail = newList = initList(newList);
+  tail = new_list = InitList(new_list);
   for (int i = 1; i <= 10; i++)
   {
-    Tail = insertAfter(i, newList, Tail);
+    tail = InsertAfter(i, new_list, tail);
   }
 
-  printList(newList);
+  PrintList(new_list);
 
-  printf("Is [10] the TAIL ? [ %d ]\n", isLast(Tail, newList));
+  printf("Is [10] the TAIL ? [ %d ]\n", IsLast(tail, new_list));
 
-  printf("What's the value of HEADER? [ %d ]\n", retrieve(header(newList)));
+  printf("What's the value of HEADER? [ %d ]\n", Retrieve(Header(new_list)));
 
-  P = forward_n(header(newList), 5);
-  printf("What's the value of 5th element? [ %d ]\n", retrieve(P));
+  P = Forward_n(Header(new_list), 5);
+  printf("What's the value of 5th element? [ %d ]\n", Retrieve(P));
 
-  deleteByPtr(P, newList);
+  DeleteByPtr(P, new_list);
   printf("After delete 5th element:\n");
-  printList(newList);
+  PrintList(new_list);
 
-  P = forward_n(header(newList), 5);
-  printf("What's the value of 5th element? [ %d ]\n", retrieve(P));
+  P = Forward_n(Header(new_list), 5);
+  printf("What's the value of 5th element? [ %d ]\n", Retrieve(P));
 
   printf("Insert [69] before that:\n");
-  P = insertBefore(69, newList, P);
-  printList(newList);
+  InsertBefore(69, new_list, P);
+  PrintList(new_list);
 
-  printf("Where's the element [8]? [ %d ]\n", retrieve(find(8, newList)));
+  printf("Where's the element [8]? [ %d ]\n", Retrieve(Find(8, new_list)));
 
   printf("Delete element 7\n");
-  deleteByValue(7, newList);
-  printList(newList);
+  DeleteByValue(7, new_list);
+  PrintList(new_list);
 
-  P = last(newList);
-  printf("What's the value of the last element? [%d]\n", retrieve(P));
+  P = Last(new_list);
+  printf("What's the value of the Last element? [%d]\n", Retrieve(P));
 
-  deleteByPtr(P, newList);
-  P = NULL;
-  printList(newList);
+  DeleteByPtr(P, new_list);
+  PrintList(new_list);
 
-  P = forward(find(69, newList));
-  printf("What's the element after [69]? [ %d ]\n", retrieve(P));
+  P = Forward(Find(69, new_list));
+  printf("What's the element after [69]? [ %d ]\n", Retrieve(P));
 
-  P = backward(find(69, newList));
-  printf("What's the element before [69]? [ %d ]\n", retrieve(P));
+  P = Backward(Find(69, new_list));
+  printf("What's the element before [69]? [ %d ]\n", Retrieve(P));
 
-  P = backward_n(last(newList), length(newList) - 1);
-  printf("Get 1st element using the tail [ %d ]\n", retrieve(P));
+  P = Backward_n(Last(new_list), Length(new_list) - 1);
+  printf("Get 1st element using the tail [ %d ]\n", Retrieve(P));
 
   return 0;
 }
@@ -79,7 +78,7 @@ int main()
  * ---[Print]---
  * 1->2->3->4->69->6->8->9->10
  * -------------
- * What's the value of the last element? [10]
+ * What's the value of the Last element? [10]
  * ---[Print]---
  * 1->2->3->4->69->6->8->9
  * -------------

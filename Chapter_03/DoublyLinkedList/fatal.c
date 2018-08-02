@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "fatal.h"
 
-void fatal(const char* s)
+void Fatal(const char *s)
 {
   fprintf(stderr, s);
   fflush(stderr);

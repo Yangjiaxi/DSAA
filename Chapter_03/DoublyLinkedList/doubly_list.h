@@ -10,44 +10,44 @@ typedef struct Node *PtrToNode;
 typedef PtrToNode DoublyList;  //ADT::DoublyList
 typedef PtrToNode Position;
 
-DoublyList initList(DoublyList L);
+DoublyList InitList(DoublyList L);
 
-void deleteList(DoublyList L);
+void DeleteList(DoublyList L);
 
-int isEmpty(DoublyList L);
+int IsEmpty(DoublyList L);
 
-int isFirst(Position P, DoublyList L);
+int IsFirst(Position P, DoublyList L);
 
-int isLast(Position P, DoublyList L);
+int IsLast(Position P, DoublyList L);
 
-Position find(int X, DoublyList L);
+Position Find(int X, DoublyList L);
 
-void deleteByValue(int X, DoublyList L);
+void DeleteByValue(int X, DoublyList L);
 
-void deleteByPtr(Position P, DoublyList L);
+void DeleteByPtr(Position P, DoublyList L);
 
-Position insertAfter(int X, DoublyList L, Position P);
+Position InsertAfter(int X, DoublyList L, Position P);
 
-Position insertBefore(int X, DoublyList L, Position P);
+Position InsertBefore(int X, DoublyList L, Position P);
 
-Position header(DoublyList L);
+Position Header(DoublyList L);
 
-Position last(DoublyList L);
+Position Last(DoublyList L);
 
-Position first(DoublyList L);
+Position First(DoublyList L);
 
-Position forward(Position P);
+Position Forward(Position P);
 
-Position forward_n(Position P, int n);
+Position Forward_n(Position P, int n);
 
-Position backward(Position P);
+Position Backward(Position P);
 
-Position backward_n(Position P, int n);
+Position Backward_n(Position P, int n);
 
-int retrieve(Position P);
+int Retrieve(Position P);
 
-int length(DoublyList L);
+int Length(DoublyList L);
 
-void printList(DoublyList L);
+void PrintList(DoublyList L);
 
 #endif //DOUBLYLINKEDLIST_DOUBLY_LIST_H
