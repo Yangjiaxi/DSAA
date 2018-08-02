@@ -123,41 +123,34 @@ void DeleteList(List L)
 
 Position Header(List L)
 {
-  if (L != NULL)
-  {
-    return L;
-  }
-  else
+  if (L == NULL)
   {
     printf("[ERROR] Request for a NULL, cannot get Header\n");
-    // exit(1);
+    exit(1);
+
   }
+  return L;
 }
 
 Position FirstElement(List L)
 {
-  if (L != NULL)
-  {
-    return L->next;
-  }
-  else
+  if (L == NULL)
   {
     printf("[ERROR] Request for a NULL, cannot get first\n");
-    // exit(1);
+    exit(1);
+
   }
+  return L->next;
 }
 
 Position Advance(Position P)
 {
-  if (P != NULL)
-  {
-    return P->next;
-  }
-  else
+  if (P == NULL)
   {
     printf("[ERROR] Request for a NULL, cannot perform Advance\n");
-    // exit(1);
+     exit(1);
   }
+  return P->next;
 }
 
 Position Advance_n(Position P, int n)
