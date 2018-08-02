@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include "list_ptr.h"
 
-void findAndOut(int X, list L)
+void findAndOut(int X, List L)
 {
-  position P = find(X, L);
+  Position P = Find(X, L);
   if (P != NULL)
   {
-    printf("element [ %d ] found!, %d\n", X, retrieve(P));
+    printf("element [ %d ] found!, %d\n", X, Retrieve(P));
   }
   else
   {
@@ -16,31 +16,31 @@ void findAndOut(int X, list L)
 
 int main()
 {
-  list L = NULL;
-  L = initList(L);
-  printf("Is Empty ? [ %d ]\n", isEmpty(L));
-  position P = L;
+  List new_list = NULL;
+  new_list = InitList(new_list);
+  printf("Is Empty ? [ %d ]\n", IsEmpty(new_list));
+  Position P = new_list;
   for (int i = 1; i <= 10; i++)
   {
-    P = insertAfter(i, L, P);
+    P = InsertAfter(i, new_list, P);
   }
-  printList(L);
-  printf("Is Empty ? [ %d ]\n", isEmpty(L));
-  printf("Value of header: %d\n", retrieve(header(L)));
-  printf("Value of first element: %d\n", retrieve(firstElement(L)));
-  printf("Value of second element: %d\n", retrieve(advance(firstElement(L))));
-  printf("Value of 5-th element: %d\n", retrieve(advance_n(header(L), 5)));
-  findAndOut(5, L);
-  findAndOut(11, L);
-  deleteByValue(5, L);
-  printList(L);
-  findAndOut(5, L);
-  P = advance_n(L, 5);
-  printf("Value of 5-th element: %d\n", retrieve(P));
-  P = find(9, L);
-  deleteByPtr(P, L);
-  printList(L);
-  printf("Find tail: [ %d ]\n", isLast(advance_n(L, length(L)), L));
-  printf("List length: %d\n", length(L));
+  PrintList(new_list);
+  printf("Is Empty ? [ %d ]\n", IsEmpty(new_list));
+  printf("Value of Header: %d\n", Retrieve(Header(new_list)));
+  printf("Value of first element: %d\n", Retrieve(FirstElement(new_list)));
+  printf("Value of second element: %d\n", Retrieve(Advance(FirstElement(new_list))));
+  printf("Value of 5-th element: %d\n", Retrieve(Advance_n(Header(new_list), 5)));
+  findAndOut(5, new_list);
+  findAndOut(11, new_list);
+  DeleteByValue(5, new_list);
+  PrintList(new_list);
+  findAndOut(5, new_list);
+  P = Advance_n(new_list, 5);
+  printf("Value of 5-th element: %d\n", Retrieve(P));
+  P = Find(9, new_list);
+  DeleteByPtr(P, new_list);
+  PrintList(new_list);
+  printf("Find tail: [ %d ]\n", IsLast(Advance_n(new_list, Length(new_list)), new_list));
+  printf("List Length: %d\n", Length(new_list));
   return 0;
 }

@@ -3,42 +3,42 @@
 
 #include "list_ptr.h"
 
-struct node
+struct Node
 {
   int element;
-  position next;
+  Position next;
 };
 
-list initList(list L)
+List InitList(List L)
 {
   if (L != NULL)
   {
-    deleteList(L);
+    DeleteList(L);
   }
-  L = malloc(sizeof(struct node));
+  L = malloc(sizeof(struct Node));
   if (L == NULL)
   {
     printf("[ERROR] Out of space!!\n");
     exit(1);
   }
   L->next = NULL;
-  L->element = -1; // header is not for restore data, the value of this node is always -1
+  L->element = -1; // Header is not for restore data, the value of this Node is always -1
   return L;
 }
 
-int isEmpty(list L)
+int IsEmpty(List L)
 {
   return L->next == NULL;
 }
 
-int isLast(position P, list L)
+int IsLast(Position P, List L)
 {
   return P->next == NULL;
 }
 
-position find(int X, list L)
+Position Find(int X, List L)
 {
-  position P;
+  Position P;
   P = L->next;
   while (P != NULL && P->element != X)
   {
@@ -47,11 +47,11 @@ position find(int X, list L)
   return P;
 }
 
-void deleteByValue(int X, list L)
+void DeleteByValue(int X, List L)
 {
-  position P, target;
-  P = findPreviousByValue(X, L);
-  if (!isLast(P, L))
+  Position P, target;
+  P = FindPreviousByValue(X, L);
+  if (!IsLast(P, L))
   {
     target = P->next;
     P->next = target->next;
@@ -59,20 +59,20 @@ void deleteByValue(int X, list L)
   }
 }
 
-void deleteByPtr(position P, list L)
+void DeleteByPtr(Position P, List L)
 {
-  position prev;
-  prev = findPreviousByPtr(P, L);
-  if (!isLast(prev, L))
+  Position prev;
+  prev = FindPreviousByPtr(P, L);
+  if (!IsLast(prev, L))
   {
     prev->next = P->next;
     free(P);
   }
 }
 
-position findPreviousByValue(int X, list L)
+Position FindPreviousByValue(int X, List L)
 {
-  position P;
+  Position P;
   P = L;
   while (P->next != NULL && P->next->element != X)
   {
@@ -81,9 +81,9 @@ position findPreviousByValue(int X, list L)
   return P;
 }
 
-position findPreviousByPtr(position P, list L)
+Position FindPreviousByPtr(Position P, List L)
 {
-  position tmp;
+  Position tmp;
   tmp = L;
   while (tmp->next != NULL && tmp->next != P)
   {
@@ -92,11 +92,11 @@ position findPreviousByPtr(position P, list L)
   return tmp;
 }
 
-// insertAfter X after P in L
-position insertAfter(int X, list L, position P)
+// InsertAfter X after P in L
+Position InsertAfter(int X, List L, Position P)
 {
-  position target;
-  target = malloc(sizeof(struct node));
+  Position target;
+  target = malloc(sizeof(struct Node));
   if (target == NULL)
   {
     printf("[ERROR] Out of space!!\n");
@@ -108,9 +108,9 @@ position insertAfter(int X, list L, position P)
   return target;
 }
 
-void deleteList(list L)
+void DeleteList(List L)
 {
-  position P, Tmp;
+  Position P, Tmp;
   P = L->next;
   L->next = NULL;
   while (P != NULL)
@@ -121,7 +121,7 @@ void deleteList(list L)
   }
 }
 
-position header(list L)
+Position Header(List L)
 {
   if (L != NULL)
   {
@@ -129,12 +129,12 @@ position header(list L)
   }
   else
   {
-    printf("[ERROR] Request for a NULL, cannot get header\n");
+    printf("[ERROR] Request for a NULL, cannot get Header\n");
     // exit(1);
   }
 }
 
-position firstElement(list L)
+Position FirstElement(List L)
 {
   if (L != NULL)
   {
@@ -147,7 +147,7 @@ position firstElement(list L)
   }
 }
 
-position advance(position P)
+Position Advance(Position P)
 {
   if (P != NULL)
   {
@@ -155,14 +155,14 @@ position advance(position P)
   }
   else
   {
-    printf("[ERROR] Request for a NULL, cannot perform advance\n");
+    printf("[ERROR] Request for a NULL, cannot perform Advance\n");
     // exit(1);
   }
 }
 
-position advance_n(position P, int n)
+Position Advance_n(Position P, int n)
 {
-  position Tmp = P;
+  Position Tmp = P;
   for (int i = 0; i < n; i++)
   {
     if (Tmp != NULL)
@@ -171,7 +171,7 @@ position advance_n(position P, int n)
     }
     else
     {
-      printf("[ERROR] Out of range, cannot perform advance!\n");
+      printf("[ERROR] Out of range, cannot perform Advance!\n");
       Tmp = NULL;
       break;
       // exit(1);
@@ -180,7 +180,7 @@ position advance_n(position P, int n)
   return Tmp;
 }
 
-int retrieve(position P)
+int Retrieve(Position P)
 {
   if (P != NULL)
   {
@@ -188,16 +188,16 @@ int retrieve(position P)
   }
   else
   {
-    printf("[ERROR] Request for a NULL, cannot retrieve!\n");
+    printf("[ERROR] Request for a NULL, cannot Retrieve!\n");
     return -1;
     // exit(1);
   }
 }
 
-void printList(list L)
+void PrintList(List L)
 {
   printf("---[Print]---\n");
-  position P;
+  Position P;
   P = L->next;
   while (P != NULL)
   {
@@ -211,10 +211,10 @@ void printList(list L)
   printf("\n-------------\n");
 }
 
-int length(list L)
+int Length(List L)
 {
   int count = 0;
-  position tmp = firstElement(L);
+  Position tmp = FirstElement(L);
   while (tmp != NULL)
   {
     ++count;

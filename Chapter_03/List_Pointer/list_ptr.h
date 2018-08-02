@@ -1,43 +1,43 @@
 #ifndef LIST_POINTER_LIST_H
 #define LIST_POINTER_LIST_H
 
-struct node;
-typedef struct node *ptrToNode;
-typedef ptrToNode list;
-typedef ptrToNode position;
+struct Node;
+typedef struct Node *PtrToNode;
+typedef PtrToNode List;
+typedef PtrToNode Position;
 
-list initList(list L);
+List InitList(List L);
 
-int isEmpty(list L);
+int IsEmpty(List L);
 
-int isLast(position P, list L);
+int IsLast(Position P, List L);
 
-position find(int X, list L);
+Position Find(int X, List L);
 
-void deleteByValue(int X, list L);
+void DeleteByValue(int X, List L);
 
-void deleteByPtr(position X, list L);
+void DeleteByPtr(Position X, List L);
 
-position findPreviousByValue(int X, list L);
+Position FindPreviousByValue(int X, List L);
 
-position findPreviousByPtr(position P, list L);
+Position FindPreviousByPtr(Position P, List L);
 
-position insertAfter(int X, list L, position P);
+Position InsertAfter(int X, List L, Position P);
 
-void deleteList(list L);
+void DeleteList(List L);
 
-position header(list L);
+Position Header(List L);
 
-position firstElement(list L);
+Position FirstElement(List L);
 
-position advance(position P);
+Position Advance(Position P);
 
-position advance_n(position P, int n);
+Position Advance_n(Position P, int n);
 
-int retrieve(position P);
+int Retrieve(Position P);
 
-int length(list L);
+int Length(List L);
 
-void printList(list L);
+void PrintList(List L);
 
 #endif //LIST_POINTER_LIST_H
