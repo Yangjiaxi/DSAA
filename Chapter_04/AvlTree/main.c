@@ -11,7 +11,6 @@ int main()
   AT = Insert(8, AT);
   AT = Insert(10, AT);
 
-
   printf("\nInorder:");
   InorderTreeWalk(AT);
   printf("\nPreOrder:");
