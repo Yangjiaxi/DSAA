@@ -9,7 +9,7 @@ typedef struct TreeNode
   SearchTree Right;
 } TreeNode;
 
-SearchTree MakeEmpty(SearchTree T) //递归释放所有节点，相当于构造一个空树
+void MakeEmpty(SearchTree T) //递归释放所有节点，相当于构造一个空树
 {
   if (T != NULL)
   {

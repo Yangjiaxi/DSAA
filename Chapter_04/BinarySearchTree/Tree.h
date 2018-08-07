@@ -9,7 +9,7 @@ struct TreeNode;
 typedef struct TreeNode *Position;
 typedef struct TreeNode *SearchTree;
 
-SearchTree MakeEmpty(SearchTree T);     //清空（初始化或程序结束后的释放）
+void MakeEmpty(SearchTree T);           //清空（初始化或程序结束后的释放）
 Position Find(int X, SearchTree T);     //在树T中寻找元素X的位置，并返回指向节点的指针，未找到返回NULL
 Position FindMin(SearchTree T);         //寻找树中最小元素
 Position FindMax(SearchTree T);         //寻找树中最大元素（不使用递归）
