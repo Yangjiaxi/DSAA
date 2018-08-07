@@ -22,7 +22,6 @@ unsigned m_GCD(const unsigned int A[], int N)
   {
     return GCD(A[0], m_GCD(&A[1], N - 1));
   }
-
 }
 
 int main()

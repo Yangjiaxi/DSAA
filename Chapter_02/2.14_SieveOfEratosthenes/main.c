@@ -4,7 +4,7 @@
 void PrimeSieve(int A[], int N)
 {
   A[0] = A[1] = 1;
-  int mid = (int) sqrt(N);
+  int mid = (int)sqrt(N);
   for (int i = 2; i < mid; i++)
   {
     if (!A[i])

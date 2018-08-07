@@ -6,7 +6,7 @@ long long FastPow(int a, int b) // compute a^b
   long long base = a;
   while (b)
   {
-    if(b % 2)
+    if (b % 2)
     {
       res *= base;
     }

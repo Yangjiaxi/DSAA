@@ -6,11 +6,11 @@ void output(const int[], int);
 
 typedef struct result group;
 
-group maxSubSeqSum_1(const int[], int);  // O(N^3)
+group maxSubSeqSum_1(const int[], int); // O(N^3)
 
-group maxSubSeqSum_2(const int[], int);  // O(N^2)
+group maxSubSeqSum_2(const int[], int); // O(N^2)
 
-int maxSubSeqSum_3(const int[], int);  // O(N*logN)
+int maxSubSeqSum_3(const int[], int); // O(N*logN)
 static int maxSub_3(const int[], int, int);
 
 group maxSubSeqSum_4(const int[], int); // O(N), online algorithm
@@ -106,7 +106,8 @@ static int maxSub_3(const int A[], int left, int right)
     {
       return A[left];
     }
-    else return 0;
+    else
+      return 0;
   }
 
   int center = (left + right) / 2;
@@ -165,14 +166,12 @@ group maxSubSeqSum_4(const int A[], int N)
   return ans;
 }
 
-
 void showRes(const int A[], int N, group ans)
 {
   output(A, N);
   printf("\tMax Sub Sequence is From %d to %d\n", ans.left, ans.right);
   printf("\tMax Sum is %d\n\n", ans.maxSum);
 }
-
 
 int main()
 {
