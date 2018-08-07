@@ -9,7 +9,7 @@ typedef struct TreeNode
   SearchTree Right;
 } TreeNode;
 
-SearchTree MakeEmpty(SearchTree T)  //递归释放所有节点，相当于构造一个空树
+SearchTree MakeEmpty(SearchTree T) //递归释放所有节点，相当于构造一个空树
 {
   if (T != NULL)
   {
@@ -21,13 +21,13 @@ SearchTree MakeEmpty(SearchTree T)  //递归释放所有节点，相当于构造
 
 Position Find(int X, SearchTree T) //在树T中寻找元素X的位置，并返回指向节点的指针，未找到返回NULL
 {
-  if (T == NULL)  //树T为空，代表寻找到叶子仍未找到目标元素；或树T本来就为空
+  if (T == NULL) //树T为空，代表寻找到叶子仍未找到目标元素；或树T本来就为空
   {
     return NULL;
   }
   else
   {
-    if (X < T->Element)  //比根节点大，进入左子树搜索
+    if (X < T->Element) //比根节点大，进入左子树搜索
     {
       return Find(X, T->Left);
     }
@@ -38,7 +38,7 @@ Position Find(int X, SearchTree T) //在树T中寻找元素X的位置，并返�
   }
 }
 
-Position FindMin(SearchTree T)  //寻找树中最小元素
+Position FindMin(SearchTree T) //寻找树中最小元素
 {
   if (T == NULL)
   {
@@ -46,7 +46,7 @@ Position FindMin(SearchTree T)  //寻找树中最小元素
   }
   else
   {
-    if (T->Left == NULL)  //当前节点的左子树为空，说明该节点保存着最小值
+    if (T->Left == NULL) //当前节点的左子树为空，说明该节点保存着最小值
     {
       return T;
     }
@@ -74,7 +74,7 @@ SearchTree Insert(int X, SearchTree T) //插入值为X的节点
   //这里T==null处理两种情况，1.找到了应该放置的节点 2.树T本身为空
   if (T == NULL)
   {
-    T = (TreeNode *) malloc(sizeof(TreeNode));
+    T = (TreeNode *)malloc(sizeof(TreeNode));
     if (T == NULL)
     {
       printf("\nFatal Error: Out of space!\n");
@@ -104,7 +104,7 @@ SearchTree Insert(int X, SearchTree T) //插入值为X的节点
 SearchTree Delete(int X, SearchTree T) //删除树中值为X的节点
 {
   Position TmpCell; //相当于中间变量
-  if (T == NULL) //始终未找到
+  if (T == NULL)    //始终未找到
   {
     printf("Element [%d] Not Found", X);
   }
@@ -199,10 +199,3 @@ void PostTreeWalk(SearchTree T)
     printf("%d ", T->Element);
   }
 }
-
-
-
-
-
-
-
