@@ -1,5 +1,19 @@
 #include "queue_idx.h"
 #include <stdio.h>
+#include <stdlib.h>
+
+struct _Queue
+{
+  Postion Data[MAX_QUEUE_SIZE];
+  int front;
+  int rear;
+  int size;
+};
+
+Queue NewQueue()
+{
+  return malloc(sizeof(struct _Queue));
+}
 
 void InitQueue(Queue Q)
 {

@@ -5,15 +5,11 @@
 
 #define MAX_QUEUE_SIZE 20
 
-struct _Queue
-{
-  Postion Data[MAX_QUEUE_SIZE];
-  int front;
-  int rear;
-  int size;
-};
+struct _Queue;
 
 typedef struct _Queue *Queue;
+
+Queue NewQueue();
 
 void InitQueue(Queue Q);
 

@@ -1,15 +1,11 @@
 #ifndef TRANVERSALOFTREE_TREE_H
 #define TRANVERSALOFTREE_TREE_H
 
+struct Node;
 typedef struct Node *Postion;
 typedef struct Node *Tree;
 
-struct Node
-{
-  int Element;
-  Postion Left;
-  Postion Right;
-};
+Tree MakeTree();
 
 Tree MakeEmpty(Tree T);
 

@@ -4,6 +4,13 @@
 #include "tree_tranversal.h"
 #include "queue_idx.h"
 
+struct Node
+{
+  int Element;
+  Postion Left;
+  Postion Right;
+};
+
 Tree MakeEmpty(Tree T)
 {
   if (T != NULL)
@@ -56,7 +63,7 @@ void PostOrder(Tree T)
 
 void LevelOrder(Tree T)
 {
-  Queue Q = malloc(sizeof(struct _Queue));
+  Queue Q = NewQueue();
   InitQueue(Q);
   EnQueue(Q, T);
   Postion Tmp = NULL;
@@ -67,4 +74,16 @@ void LevelOrder(Tree T)
     if (Tmp->Left != NULL) EnQueue(Q, Tmp->Left);
     if (Tmp->Right != NULL) EnQueue(Q, Tmp->Right);
   }
+}
+
+Tree MakeTree()
+{
+  Tree T = NULL;
+  T = NewNode(6);
+  T->Left = NewNode(5);
+  T->Right = NewNode(15);
+  T->Right->Left = NewNode(7);
+  T->Right->Left->Right = NewNode(14);
+  T->Right->Right = NewNode(16);
+  return T;
 }

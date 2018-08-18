@@ -6,12 +6,7 @@
 int main()
 {
   Tree T1 = NULL;
-  T1 = NewNode(6);
-  T1->Left = NewNode(5);
-  T1->Right = NewNode(15);
-  T1->Right->Left = NewNode(7);
-  T1->Right->Left->Right = NewNode(14);
-  T1->Right->Right = NewNode(16);
+  T1 = MakeTree();
 
   printf("\nPre Order Tree Traversal:\n");
   PreOrder(T1);
