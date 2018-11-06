@@ -145,7 +145,7 @@ AvlTree Insert(int X, AvlTree T)
 {
   if (T == NULL)
   {
-    T = (AvlNode *)malloc(sizeof(AvlNode));
+    T = (AvlNode *) malloc(sizeof(AvlNode));
     if (T == NULL)
     {
       printf("ERROR:Out of space!\n");
