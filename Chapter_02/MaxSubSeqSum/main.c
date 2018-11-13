@@ -1,20 +1,24 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+#define _TIME_INIT clock_t tic = 0;
+#define _TIME_START tic = clock();
+#define _TIME_END printf("TIME USE: %lu ticks\n", clock() - tic);
+
+#define OUTPUT_ARRAY 0
 
 #define max(a, b) ((a) > (b) ? (a) : (b))
 
-void output(const int[], int);
-
 typedef struct result group;
 
-group maxSubSeqSum_1(const int[], int); // O(N^3)
+void output(const int[], int);
 
-group maxSubSeqSum_2(const int[], int); // O(N^2)
-
-int maxSubSeqSum_3(const int[], int); // O(N*logN)
-static int maxSub_3(const int[], int, int);
-
-group maxSubSeqSum_4(const int[], int); // O(N), online algorithm
-
+group maxSubSeqSum_1(const int[], int);     // O(N^3)
+group maxSubSeqSum_2(const int[], int);     // O(N^2)
+int maxSubSeqSum_3(const int[], int);       // O(N*logN)
+static int maxSub_3(const int[], int, int); // Start point of above
+group maxSubSeqSum_4(const int[], int);     // O(N), online algorithm
 void showRes(const int[], int, group);
 
 typedef struct result
@@ -168,79 +172,56 @@ group maxSubSeqSum_4(const int A[], int N)
 
 void showRes(const int A[], int N, group ans)
 {
-  output(A, N);
+  if (OUTPUT_ARRAY)
+  {
+    output(A, N);
+  }
   printf("\tMax Sub Sequence is From %d to %d\n", ans.left, ans.right);
   printf("\tMax Sum is %d\n\n", ans.maxSum);
 }
 
+int *make_rand(int size)
+{
+  srand((unsigned int) time(NULL));
+  int *rnd = malloc(size * sizeof(int));
+  for (int i = 0; i < size; i++)
+  {
+    rnd[i] = rand() % 200 - 100;
+  }
+  return rnd;
+}
+
 int main()
 {
-  int NA = 6;
-  int A[6] = {-2, 11, -4, 13, -5, -2};
-  int NB = 8;
-  int B[8] = {4, -3, 5, -2, -1, 2, 6, -2};
+  _TIME_INIT
+  int size = 1000;
+  int *arr = make_rand(size);
   group ans;
+  printf("Problem size: %d\n", size);
 
   printf("Method.01\n");
-  ans = maxSubSeqSum_1(A, NA);
-  showRes(A, NA, ans);
+  _TIME_START
+  ans = maxSubSeqSum_1(arr, size);
+  _TIME_END
+  showRes(arr, size, ans);
 
   printf("Method.02\n");
-  ans = maxSubSeqSum_2(B, NB);
-  showRes(B, NB, ans);
+  _TIME_START
+  ans = maxSubSeqSum_2(arr, size);
+  _TIME_END
+  showRes(arr, size, ans);
 
   printf("Method.03\n");
-  int res = maxSubSeqSum_3(B, NB);
+  _TIME_START
+  int res = maxSubSeqSum_3(arr, size);
+  _TIME_END
   printf("\tMax Sum is %d\n", res);
 
   printf("\nMethod.04\n");
-  ans = maxSubSeqSum_4(A, NA);
-  showRes(A, NA, ans);
-  ans = maxSubSeqSum_4(B, NB);
-  showRes(B, NB, ans);
-  int NC = 3;
-  int C[8] = {-1, -2, -3};
-  ans = maxSubSeqSum_4(C, NC);
-  showRes(C, NC, ans);
+  _TIME_START
+  ans = maxSubSeqSum_4(arr, size);
+  _TIME_END
+  showRes(arr, size, ans);
 
   return 0;
 }
-
-/*
-Method.01
-  0	  1	  2	  3	  4	  5
----------------------------------
- -2	 11	 -4	 13	 -5	 -2
-	Max Sub Sequence is From 1 to 3
-	Max Sum is 20
-
-Method.02
-  0	  1	  2	  3	  4	  5	  6	  7
----------------------------------
-  4	 -3	  5	 -2	 -1	  2	  6	 -2
-	Max Sub Sequence is From 0 to 6
-	Max Sum is 11
-
-Method.03
-	Max Sum is 11
-
-Method.04
-  0	  1	  2	  3	  4	  5
----------------------------------
- -2	 11	 -4	 13	 -5	 -2
-	Max Sub Sequence is From 1 to 3
-	Max Sum is 20
-
-  0	  1	  2	  3	  4	  5	  6	  7
----------------------------------
-  4	 -3	  5	 -2	 -1	  2	  6	 -2
-	Max Sub Sequence is From 0 to 6
-	Max Sum is 11
-
-  0	  1	  2
----------------------------------
- -1	 -2	 -3
-	Max Sub Sequence is From 3 to 3
-	Max Sum is 0
-
- */
