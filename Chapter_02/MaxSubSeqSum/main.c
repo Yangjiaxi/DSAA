@@ -10,7 +10,12 @@
 
 #define max(a, b) ((a) > (b) ? (a) : (b))
 
-typedef struct result group;
+typedef struct result
+{
+  int maxSum;
+  int left;
+  int right;
+} group;
 
 void output(const int[], int);
 
@@ -21,12 +26,6 @@ static int maxSub_3(const int[], int, int); // Start point of above
 group maxSubSeqSum_4(const int[], int);     // O(N), online algorithm
 void showRes(const int[], int, group);
 
-typedef struct result
-{
-  int maxSum;
-  int left;
-  int right;
-} group;
 
 void output(const int A[], int N)
 {
@@ -194,7 +193,7 @@ int *make_rand(int size)
 int main()
 {
   _TIME_INIT
-  int size = 1000;
+  int size = 2000;
   int *arr = make_rand(size);
   group ans;
   printf("Problem size: %d\n", size);
