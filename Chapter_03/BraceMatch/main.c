@@ -60,4 +60,5 @@ int main()
     {
         printf("Do not Match\n");
     }
+    return 0;
 }
