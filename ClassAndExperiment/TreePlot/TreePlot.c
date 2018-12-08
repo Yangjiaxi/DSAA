@@ -34,6 +34,7 @@ int PrintElement(Tree T, int is_left, int offset, int depth, char** buffer)
     for (int i = 0; i < width; i++)
         buffer[2 * depth][offset + left + i] = b[i];
 
+    // 2. 连接线，简单的模拟算法
     if (depth)  // 不是根节点
     {
         buffer[2 * depth - 1][offset + left + width / 2] = '+';
@@ -41,7 +42,6 @@ int PrintElement(Tree T, int is_left, int offset, int depth, char** buffer)
         {
             for (int i = 1; i < width + right; i++)
                 buffer[2 * depth - 1][offset + left + width / 2 + i] = '-';
-            // buffer[2 * depth - 1][offset + left + width / 2] = '/';
             // 从左子树根的中心位置推测其父节点的中心位置
             buffer[2 * depth - 1][offset + left + width + right + width / 2] = '+';
         }
@@ -49,7 +49,6 @@ int PrintElement(Tree T, int is_left, int offset, int depth, char** buffer)
         {
             for (int i = 0; i < left + width - 1; i++)
                 buffer[2 * depth - 1][offset - width / 2 + i] = '-';
-            // buffer[2 * depth - 1][offset + left + width / 2] = '\\';
             // 从右子树根的中心位置推测其父节点的中心位置
             buffer[2 * depth - 1][offset - width / 2 - 1] = '+';
         }
@@ -58,18 +57,13 @@ int PrintElement(Tree T, int is_left, int offset, int depth, char** buffer)
     return left + width + right;
 }
 
-static int max(int a, int b)
-{
-    return a > b ? a : b;
-}
-
 int TreeHeight(Tree T)
 {
     if (!T)
     {
         return 0;
     }
-    return max(TreeHeight(T->Left), TreeHeight(T->Right)) + 1;
+    return Max(TreeHeight(T->Left), TreeHeight(T->Right)) + 1;
 }
 
 void TreePlot(Tree T)
