@@ -73,7 +73,7 @@ void TreePlot(Tree T)
     int ConsoleWidth = w.ws_col;
     int Height = 2 * TreeHeight(T) - 1;
     AlignPrint(ConsoleWidth, '-', "Print : Tree Plot");
-    printf("Print Lines : %d, Console Width : %d", Height, ConsoleWidth);
+    printf("Print Lines : %d\nConsole Width : %d", Height, ConsoleWidth);
     endl();
 
     char** s = malloc(sizeof(char*) * Height);
@@ -85,7 +85,7 @@ void TreePlot(Tree T)
     }
 
     int FinalWidth = PrintElement(T, 0, 0, 0, s);
-    printf("final width: %d\n", FinalWidth);
+    printf("Final Width : %d\n", FinalWidth);
     if (FinalWidth > ConsoleWidth)
     {
         AlignPrint(ConsoleWidth, '-',
