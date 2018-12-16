@@ -1,7 +1,13 @@
-#include "UsefulFunc.h"
+#include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/ioctl.h>
+
+void endl()
+{
+    printf("\n");
+}
 
 char* StrConcat(const char* s1, char* s2)
 {
@@ -17,8 +23,8 @@ char* StrConcat(const char* s1, char* s2)
 
 void AlignPrint(int width, char pad, const char* text)
 {
-    printf("\n");
-    int t_len = strlen(text);
+    // printf("\n");
+    int t_len = strlen(text) + 4;
     int l = (width - t_len + 1) / 2;
     for (int i = 1; i <= l; i++)
         printf("%c", pad);
@@ -28,4 +34,37 @@ void AlignPrint(int width, char pad, const char* text)
     for (int i = 1; i <= width; i++)
         printf("%c", pad);
     printf("\n");
+}
+
+int FindChar(const char* str, char ch)
+{
+    char* res = strchr(str, ch);
+    if (res != NULL)
+    {
+        return res - str;
+    }
+    else
+    {
+        return -1;
+    }
+}
+
+char* StrCopy(const char* str, int size)
+{
+    char* res = malloc(sizeof(char) * (size + 1));
+    strncpy(res, str, size);
+    res[size] = '\0';
+    return res;
+}
+
+int GetConsoleWidth()
+{
+    struct winsize w;
+    ioctl(0, TIOCGWINSZ, &w);
+    return w.ws_col;
+}
+
+int Max(int a, int b)
+{
+    return a > b ? a : b;
 }
