@@ -2,6 +2,8 @@
 #include "AvlTree/AvlTree.h"
 #include "BST/BST.h"
 #include "DoublyList/DoublyList.h"
+#include "Hash/Hash.h"
+#include "Hash/HashCode.h"
 #include "List/List.h"
 #include "Queue/Queue.h"
 #include "Stack/Stack.h"
@@ -60,5 +62,15 @@ int main()
         avl = AvlInsert(GetRandomNumber(0, 100), avl);
     TreePlot(avl, "%03d", 3);
     avl = MakeEmpty(avl);
+
+    printf("\n%s\n", "8. Hash");
+    HashTable hash = NewHashTable(BKDRHash);
+    for (int i = 1; i <= 100; i++)
+    {
+        hash = HashInsert(RandomString(GetRandomNumber(2, 65)), hash);
+    }
+    HashScore(hash);
+
+    DestoryTable(hash);
     return 0;
 }
