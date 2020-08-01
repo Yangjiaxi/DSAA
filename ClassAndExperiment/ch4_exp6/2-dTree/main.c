@@ -30,13 +30,16 @@ int main()
     char* FirstName[] = {"Harry",  "Dwight", "John",   "Lyndon", "Richard",
                          "Gerald", "Jimmy",  "Ronald", "George", "Bill"};
 
-    char* SecondName[] = {"Truman", "Eisenhower", "Kennedy", "Johnson", "Nixon",
-                          "Ford",   "Carter",     "Reagan",  "Bush",    "Clinton"};
+    char* SecondName[] = {"Truman", "Eisenhower", "Kennedy", "Johnson",
+                          "Nixon",  "Ford",       "Carter",  "Reagan",
+                          "Bush",   "Clinton"};
 
     for (int i = 0; i < 10; i++)
     {
         // T = TreeInsert(CreateData(FirstName[i], SecondName[i]), T, cmp);
-        T = TreeInsert(CreateData(GetRandomNumber(0, 100), GetRandomNumber(0, 100)), T, cmp);
+        T = TreeInsert(
+            CreateData(GetRandomNumber(0, 100), GetRandomNumber(0, 100)), T,
+            cmp);
     }
 
     // TreePreWalk(T);

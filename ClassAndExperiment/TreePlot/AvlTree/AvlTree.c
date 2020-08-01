@@ -143,7 +143,8 @@ AvlTree Delete(int X, AvlTree T)  //删除树中值为X的节点
     if (T != NULL)
     {
         T->Height = Max(Height(T->Left), Height(T->Right)) + 1;
-        if ((Height(T->Left) - Height(T->Right) >= 2) || (Height(T->Right) - Height(T->Left) >= 2))
+        if ((Height(T->Left) - Height(T->Right) >= 2) ||
+            (Height(T->Right) - Height(T->Left) >= 2))
         {
             //由于是递归删除，不用保存被删除元素的父节点，每层递归都会执行平衡检查，相当于从被删除节点一路向上检查
             T = Fix(T);

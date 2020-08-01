@@ -23,7 +23,8 @@ int PrintElement(Tree T, int is_left, int offset, int depth, char** buffer)
     // 得到左子树的总宽度
     int left = PrintElement(T->Left, 1, offset, depth + 1, buffer);
     // 右子树的总宽度
-    int right = PrintElement(T->Right, 0, offset + left + width, depth + 1, buffer);
+    int right =
+        PrintElement(T->Right, 0, offset + left + width, depth + 1, buffer);
 
     // 当左右子树都处理完成时
     // 开始处理根节点(准确的说，子树的根)与节点之间的连接线
@@ -43,7 +44,8 @@ int PrintElement(Tree T, int is_left, int offset, int depth, char** buffer)
             for (int i = 1; i < width + right; i++)
                 buffer[2 * depth - 1][offset + left + width / 2 + i] = '-';
             // 从左子树根的中心位置推测其父节点的中心位置
-            buffer[2 * depth - 1][offset + left + width + right + width / 2] = '+';
+            buffer[2 * depth - 1][offset + left + width + right + width / 2] =
+                '+';
         }
         else  // 是右子树
         {
@@ -89,7 +91,8 @@ void TreePlot(Tree T)
     if (FinalWidth > ConsoleWidth)
     {
         AlignPrint(ConsoleWidth, '-',
-                   "WARNING : Current console CANNOT show enough characters, tree may looks "
+                   "WARNING : Current console CANNOT show enough characters, "
+                   "tree may looks "
                    "werid, scale console and try again");
     }
 

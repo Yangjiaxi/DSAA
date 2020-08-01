@@ -2,7 +2,7 @@
 #define LIST_POINTER_LIST_H
 
 struct Node;
-typedef struct Node *PtrToNode;
+typedef struct Node* PtrToNode;
 typedef PtrToNode List;
 typedef PtrToNode Position;
 
@@ -40,4 +40,4 @@ int Length(List L);
 
 void PrintList(List L);
 
-#endif //LIST_POINTER_LIST_H
+#endif  // LIST_POINTER_LIST_H
